@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Technik">
+  <defs>
+    <linearGradient id="bg-tech" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2fee6"/>
+      <stop offset="100%" stop-color="#d5eec6"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg-tech)"/>
+  <rect x="24" y="30" width="80" height="50" rx="9" fill="#2f8d4e"/>
+  <rect x="30" y="36" width="68" height="35" rx="6" fill="#3da35a"/>
+  <circle cx="90" cy="74" r="3" fill="#d5eec6"/>
+  <rect x="54" y="84" width="20" height="8" rx="3" fill="#2f8d4e"/>
+  <rect x="44" y="92" width="40" height="7" rx="3" fill="#2f8d4e"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Pflege">
+  <defs>
+    <linearGradient id="bg-care" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4ffe7"/>
+      <stop offset="100%" stop-color="#d8efc8"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg-care)"/>
+  <rect x="46" y="22" width="36" height="14" rx="4" fill="#2b8549"/>
+  <rect x="42" y="34" width="44" height="68" rx="14" fill="#2f8d4e"/>
+  <rect x="51" y="52" width="26" height="36" rx="8" fill="#f4ffe7"/>
+  <circle cx="64" cy="45" r="3" fill="#d8efc8"/>
+</svg>
