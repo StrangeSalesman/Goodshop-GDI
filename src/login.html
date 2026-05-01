@@ -21,7 +21,6 @@
                 <nav>
                     <a href="../index.html" class="logo">
                         <img src="../assets/images/logo-mockup.png" alt="GoodFlow Logo" class="logo-icon">
-                       
                     </a>
                     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Navigation öffnen">
                     <label for="menu-toggle" class="hamburger" aria-hidden="true">
@@ -41,25 +40,76 @@
             <section class="login-section">
                 <article class="login-card">
                     <h2>Konto anmelden</h2>
-                    <form class="login-form" action="#" method="post">
+                    
+                    <!-- Fehlermeldung -->
+                    <div id="error-msg"></div>
+
+                    <form class="login-form" id="greenshop-login">
                         <label for="email">
-                            E-Mail
-                            <input id="email" name="email" type="email" placeholder="name@example.com" required>
+                            Nutzername / E-Mail
+                            <input id="email" name="email" type="text" placeholder="admin" required>
                         </label>
+                        
                         <label for="password">
                             Passwort
-                            <input id="password" name="password" type="password" placeholder="********" required>
+                            <div class="password-wrapper">
+                                <input id="password" name="password" type="password" placeholder="********" required>
+                                <!-- Das Auge zum Anklicken -->
+                                <span id="togglePassword" title="Passwort anzeigen">👁️</span>
+                            </div>
                         </label>
+                        
                         <div class="login-actions">
                             <a href="#" class="text-link">Passwort vergessen?</a>
-                            <a href="shop.html" class="text-link"><button type="submit" class="btn-cart">Anmelden</button></a>
-
-                            
+                            <button type="submit" class="btn-cart">Anmelden</button>
                         </div>
                     </form>
                 </article>
             </section>
         </div>
     </div>
+
+    <!-- JavaScript für Login, SQL-Injection Demo UND Passwort-Toggle -->
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+
+        document.getElementById("greenshop-login").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            const username = document.getElementById("email").value;
+            const password = passwordInput.value;
+            const errorBox = document.getElementById("error-msg");
+
+            // Die SQL-Injection Vorführung
+            if (username === "' OR '1'='1" || password === "' OR '1'='1") {
+                alert("🚨 SYSTEMWARNUNG: SQL-Injection erfolgreich! Authentifizierung umgangen.\n\n(Das ist unser Feature-Showcase für den nächsten Security-Sprint!)");
+                window.location.href = "kundenkonto.html"; 
+                return;
+            }
+
+            // Normaler, korrekter Login
+            if (username === "admin" && password === "admin") {
+                errorBox.style.display = "none";
+                window.location.href = "kundenkonto.html"; 
+            } 
+            
+            // Falsche Daten
+            else {
+                errorBox.textContent = "Fehler: Benutzername oder Passwort ist falsch.";
+                errorBox.style.display = "block";
+                
+                passwordInput.value = "";
+                passwordInput.setAttribute('type', 'password');
+                togglePassword.textContent = '👁️';
+            }
+        });
+    </script>
 </body>
 </html>

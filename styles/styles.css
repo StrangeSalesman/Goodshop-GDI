@@ -226,6 +226,7 @@ nav {
     margin-top: auto;
     padding: 10px 18px;
     font-size: 1.15rem;
+    cursor: pointer;
 }
 
 .btn-cta:hover,
@@ -488,6 +489,91 @@ footer {
     text-decoration: none;
 }
 
+
+/* ========================================================== */
+/* NEUE STYLES FÜR LOGIN-LOGIK & KUNDEN-DASHBOARD (GEÄNDERT)  */
+/* ========================================================== */
+
+#error-msg {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 12px;
+    border-radius: 12px;
+    display: none;
+    margin-bottom: 16px;
+    font-size: 0.95em;
+    border: 1px solid #f5c6cb;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; 
+}
+
+#togglePassword {
+    position: absolute;
+    right: 14px;
+    cursor: pointer;
+    user-select: none; 
+    font-size: 1.2rem;
+}
+
+.dashboard-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 26px;
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    border: 1px solid #d7e7cf;
+}
+
+.welcome-msg {
+    color: var(--green-900);
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid #c6ddbd;
+}
+
+.logout-btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 24px;
+    background-color: #d9534f;
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 700;
+    transition: filter 0.2s ease;
+}
+
+.logout-btn:hover {
+    filter: brightness(0.9);
+}
+
+
+/* ========================================================== */
+/* MEDIA QUERIES (RESPONSIVE)                                 */
+/* ========================================================== */
+
 @media (max-width: 1200px) {
     .category-grid,
     .product-grid {
@@ -620,5 +706,10 @@ footer {
 
     .product-img {
         width: clamp(170px, 66%, 230px);
+    }
+    
+    /* Responsive Anpassung für das Dashboard */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
     }
 }
