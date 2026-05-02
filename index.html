@@ -11,9 +11,41 @@
     <!-- Aktions-Banner -->
     <div id="promo-banner">
         <span class="banner-emoji">🌿</span>
-        Nur bis <span class="banner-highlight">12. Mai</span> &nbsp;–&nbsp; 10 % Rabatt auf alles im Shop!
+        10 % Rabatt auf alles! &nbsp;–&nbsp; Endet in:
+        <span class="banner-countdown">
+            <span class="countdown-block"><span id="cd-days">00</span><span class="cd-label">Tage</span></span>
+            <span class="cd-sep">:</span>
+            <span class="countdown-block"><span id="cd-hours">00</span><span class="cd-label">Std</span></span>
+            <span class="cd-sep">:</span>
+            <span class="countdown-block"><span id="cd-minutes">00</span><span class="cd-label">Min</span></span>
+            <span class="cd-sep">:</span>
+            <span class="countdown-block"><span id="cd-seconds">00</span><span class="cd-label">Sek</span></span>
+        </span>
         <span class="banner-emoji">🌿</span>
     </div>
+    <script>
+        (function () {
+            const deadline = new Date('2025-05-13T00:00:00').getTime();
+            function pad(n) { return String(n).padStart(2, '0'); }
+            function tick() {
+                const diff = deadline - Date.now();
+                if (diff <= 0) {
+                    document.getElementById('promo-banner').style.display = 'none';
+                    return;
+                }
+                const days    = Math.floor(diff / 86400000);
+                const hours   = Math.floor((diff % 86400000) / 3600000);
+                const minutes = Math.floor((diff % 3600000)  / 60000);
+                const seconds = Math.floor((diff % 60000)    / 1000);
+                document.getElementById('cd-days').textContent    = pad(days);
+                document.getElementById('cd-hours').textContent   = pad(hours);
+                document.getElementById('cd-minutes').textContent = pad(minutes);
+                document.getElementById('cd-seconds').textContent = pad(seconds);
+            }
+            tick();
+            setInterval(tick, 1000);
+        })();
+    </script>
 
     <div class="page-wrap">
         <div class="site-shell">
@@ -41,116 +73,6 @@
                         <li><a href="src/nachhaltigkeit.html">Nachhaltigkeit</a></li>
                         <li><a href="src/ueber-uns.html">Über uns</a></li>
                         <li><a href="src/blog.html">Blog</a></li>
-                    </ul>
-                </nav>
-            </header>
-
-            <section class="hero">
-                <div class="hero-content">
-                    <h1>NACHHALTIG SHOPPEN BEI Greenshop</h1>
-                    <p>Sustainable Online Shop</p>
-                    <a href="src/shop.html" class="btn-cta">JETZT ENTDECKEN</a>
-                </div>
-            </section>
-
-            <index>
-                <section class="section section-soft categories">
-                    <div class="category-grid">
-                        <a href="src/kategorien.html#haushalt" class="cat-card">
-                            <img src="assets/icons/cat-haushalt.svg" alt="Haushalt" class="cat-icon-img">
-                            <h3>HAUSHALT</h3>
-                        </a>
-                        <a href="src/kategorien.html#pflege" class="cat-card">
-                            <img src="assets/icons/cat-pflege.svg" alt="Pflege" class="cat-icon-img">
-                            <h3>PFLEGE</h3>
-                        </a>
-                        <a href="src/kategorien.html#technik" class="cat-card">
-                            <img src="assets/icons/cat-technik.svg" alt="Technik" class="cat-icon-img">
-                            <h3>TECHNIK</h3>
-                        </a>
-                        <a href="src/kategorien.html#freizeit" class="cat-card">
-                            <img src="assets/icons/cat-freizeit.svg" alt="Freizeit" class="cat-icon-img">
-                            <h3>FREIZEIT</h3>
-                        </a>
-                    </div>
-                </section>
-
-                <section class="section products">
-                    <h2 class="section-title">Unsere grünen Bestseller</h2>
-                    <div class="product-grid">
-                        <article class="product-card">
-                            <img src="assets/images/bottle.png" alt="Wasserflasche" class="product-img">
-                            <p class="price">16,90 EUR</p>
-                            <h4>Reusable Water Bottle</h4>
-                            <p class="desc">Leichte Edelstahlflasche fur den Alltag.</p>
-                            <a href="src/shop.html" class="btn-cart">IN DEN WARENKORB</a>
-                        </article>
-                        <article class="product-card">
-                            <img src="assets/images/coffee.png" alt="Kaffeebohnen" class="product-img">
-                            <p class="price">10,50 EUR</p>
-                            <h4>Organics Coffee Beans</h4>
-                            <p class="desc">Fairtrade Arabica Bohnen aus Bioanbau.</p>
-                            <a href="src/shop.html" class="btn-cart">IN DEN WARENKORB</a>
-                        </article>
-                        <article class="product-card">
-                            <img src="assets/images/toothbrush.png" alt="Bambus Zahnbuerste" class="product-img">
-                            <p class="price">2,50 EUR</p>
-                            <h4>Bamboo Toothbrush</h4>
-                            <p class="desc">Nachhaltige Zahnbürste aus Bambus.</p>
-                            <a href="src/shop.html" class="btn-cart">IN DEN WARENKORB</a>
-                        </article>
-                        <article class="product-card">
-                            <img src="assets/images/solar charger.png" alt="Solar Ladegerat" class="product-img">
-                            <p class="price">9,90 EUR</p>
-                            <h4>Solar Charger</h4>
-                            <p class="desc">Kompaktes Ladegerät fur Outdoor Trips.</p>
-                            <a href="src/shop.html" class="btn-cart">IN DEN WARENKORB</a>
-                        </article>
-                    </div>
-
-                    <div class="info-banner">
-                        <article class="info-box">
-                            <span class="info-icon">CO2</span>
-                            <p><strong>Unser CO2-bewusster Versand</strong> powered by GoodFlow Green Logistics</p>
-                        </article>
-                        <article class="info-box">
-                            <span class="info-icon">GF</span>
-                            <p><strong>Integrierter Green Footprint</strong> by GoodFlow Green Logistics</p>
-                        </article>
-                    </div>
-                </section>
-            </index>
-
-            <footer>
-                <div class="footer-col">
-                    <h4>Link</h4>
-                    <ul>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="kategorien.html">Kategorien</a></li>
-                        <li><a href="nachhaltigkeit.html">Nachhaltigkeit</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Kontakt</h4>
-                    <ul>
-                        <li>info@Greenshop.de</li>
-                        <li>+49 500 555 788</li>
-                        <li>www.Greenshop.de</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Social Media</h4>
-                    <div class="social-row">
-                        <a href="src/blog.html" class="social-btn"><img src="assets/icons/social-facebook.png" alt="Facebook" class="social-icon"></a>
-                        <a href="src/blog.html" class="social-btn"><img src="assets/icons/social-instagram.png" alt="Instagram" class="social-icon"></a>
-                        <a href="src/blog.html" class="social-btn"><img src="assets/icons/social-youtube.png" alt="YouTube" class="social-icon"></a>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
-</body>
-</html>
                     </ul>
                 </nav>
             </header>
