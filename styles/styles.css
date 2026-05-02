@@ -59,14 +59,16 @@
 
 .countdown-block {
     display: inline-flex;
-    align-items: baseline;
-    gap: 3px;
+    flex-direction: column;
+    align-items: center;
+    min-width: 28px;
 }
 
 .countdown-block span:first-child {
     font-size: 15px;
     font-weight: 800;
-    line-height: 1;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
 }
 
 .cd-label {
@@ -74,7 +76,7 @@
     font-weight: 500 !important;
     opacity: 0.8;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
 }
 
 .cd-sep {
