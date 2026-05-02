@@ -13,6 +13,42 @@
     --radius-lg: 22px;
 }
 
+/* ========================================================== */
+/* PROMO-BANNER                                               */
+/* ========================================================== */
+
+#promo-banner {
+    background-color: var(--green-800);
+    color: var(--white);
+    text-align: center;
+    padding: 11px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#promo-banner .banner-emoji {
+    font-size: 16px;
+}
+
+#promo-banner .banner-highlight {
+    background-color: var(--green-500);
+    color: var(--green-900);
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
