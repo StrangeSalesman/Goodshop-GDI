@@ -859,3 +859,54 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* ========================================================== */
+/* MOBILE: PROMO-BANNER FIXES                                 */
+/* ========================================================== */
+
+@media (max-width: 980px) {
+    #promo-banner {
+        flex-wrap: wrap;
+        font-size: 12px;
+        padding: 9px 12px;
+        gap: 6px;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    #promo-banner strong {
+        display: inline;
+    }
+
+    #promo-banner .banner-emoji {
+        display: none; /* Emojis ausblenden auf mobil für mehr Platz */
+    }
+
+    .banner-countdown {
+        padding: 3px 8px;
+        gap: 4px;
+        margin-left: 2px;
+    }
+
+    .countdown-block {
+        width: 40px;
+    }
+
+    .countdown-block span:first-child {
+        font-size: 13px;
+    }
+
+    .cd-label {
+        font-size: 9px !important;
+    }
+
+    /* Warenkorb-Seite: einspaltig auf mobil */
+    .cart-section {
+        grid-template-columns: 1fr !important;
+        padding: 20px 16px !important;
+    }
+
+    .cart-summary {
+        position: static !important;
+    }
+}
