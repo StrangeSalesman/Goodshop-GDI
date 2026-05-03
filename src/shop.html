@@ -6,6 +6,29 @@
     <title>Shop | Greenshop</title>
     <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.png">
     <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        .cart-feedback {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #1f6b3b;
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity .3s ease, transform .3s ease;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .cart-feedback.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
     <div class="page-wrap">
@@ -13,7 +36,7 @@
             <header>
                 <div class="top-bar">
                     <a href="login.html" class="top-link">Login</a>
-                    <a href="warenkorb.html" class="top-link">Warenkorb (0)</a>
+                    <a href="warenkorb.html" class="top-link" id="cart-count-link">Warenkorb (0)</a>
                     <a href="blog.html" class="social-top"><img src="../assets/icons/social-facebook.png" alt="Facebook" class="social-top-icon"></a>
                     <a href="blog.html" class="social-top"><img src="../assets/icons/social-instagram.png" alt="Instagram" class="social-top-icon"></a>
                     <a href="blog.html" class="social-top"><img src="../assets/icons/social-youtube.png" alt="YouTube" class="social-top-icon"></a>
@@ -21,7 +44,6 @@
                 <nav>
                     <a href="../index.html" class="logo">
                         <img src="../assets/images/logo-mockup.png" alt="GoodFlow Logo" class="logo-icon">
-                       
                     </a>
                     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Navigation öffnen">
                     <label for="menu-toggle" class="hamburger" aria-hidden="true">
@@ -43,6 +65,45 @@
                 <div>
                     <h1>Shop</h1>
                     <p>Hier findest du alle nachhaltigen Produkte aus den Bereichen Haushalt, Pflege, Technik und Freizeit.</p>
+                </div>
+            </section>
+
+            <section class="section products">
+                <h2 class="section-title">Alle Produkte</h2>
+                <div class="product-grid">
+
+                    <article class="product-card">
+                        <img src="../assets/images/bottle.png" alt="Wasserflasche" class="product-img">
+                        <p class="price">16,90 EUR</p>
+                        <h4>Reusable Water Bottle</h4>
+                        <p class="desc">Leichte Edelstahlflasche für den Alltag.</p>
+                        <button class="btn-cart" onclick="addToCart({id:1, name:'Reusable Water Bottle', preis:16.90, img:'../assets/images/bottle.png'})">IN DEN WARENKORB</button>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="../assets/images/coffee.png" alt="Kaffeebohnen" class="product-img">
+                        <p class="price">10,50 EUR</p>
+                        <h4>Organics Coffee Beans</h4>
+                        <p class="desc">Fairtrade Arabica Bohnen aus Bioanbau.</p>
+                        <button class="btn-cart" onclick="addToCart({id:2, name:'Organics Coffee Beans', preis:10.50, img:'../assets/images/coffee.png'})">IN DEN WARENKORB</button>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="../assets/images/toothbrush.png" alt="Bambus Zahnbürste" class="product-img">
+                        <p class="price">2,50 EUR</p>
+                        <h4>Bamboo Toothbrush</h4>
+                        <p class="desc">Nachhaltige Zahnbürste aus Bambus.</p>
+                        <button class="btn-cart" onclick="addToCart({id:3, name:'Bamboo Toothbrush', preis:2.50, img:'../assets/images/toothbrush.png'})">IN DEN WARENKORB</button>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="../assets/images/solar charger.png" alt="Solar Ladegerät" class="product-img">
+                        <p class="price">9,90 EUR</p>
+                        <h4>Solar Charger</h4>
+                        <p class="desc">Kompaktes Ladegerät für Outdoor Trips.</p>
+                        <button class="btn-cart" onclick="addToCart({id:4, name:'Solar Charger', preis:9.90, img:'../assets/images/solar charger.png'})">IN DEN WARENKORB</button>
+                    </article>
+
                 </div>
             </section>
 
@@ -74,5 +135,41 @@
             </footer>
         </div>
     </div>
+
+    <!-- Toast-Benachrichtigung -->
+    <div class="cart-feedback" id="cart-toast">✓ Produkt zum Warenkorb hinzugefügt!</div>
+
+    <script>
+        // Warenkorb-Zähler aktualisieren
+        function updateCartCount() {
+            const korb = JSON.parse(localStorage.getItem('gs_warenkorb') || '[]');
+            const total = korb.reduce((sum, item) => sum + item.menge, 0);
+            document.getElementById('cart-count-link').textContent = `Warenkorb (${total})`;
+        }
+
+        // Produkt hinzufügen
+        function addToCart(produkt) {
+            const korb = JSON.parse(localStorage.getItem('gs_warenkorb') || '[]');
+            const existing = korb.find(p => p.id === produkt.id);
+            if (existing) {
+                existing.menge += 1;
+            } else {
+                korb.push({ ...produkt, menge: 1 });
+            }
+            localStorage.setItem('gs_warenkorb', JSON.stringify(korb));
+            updateCartCount();
+            showToast();
+        }
+
+        // Toast anzeigen
+        function showToast() {
+            const toast = document.getElementById('cart-toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2200);
+        }
+
+        // Beim Laden
+        updateCartCount();
+    </script>
 </body>
 </html>

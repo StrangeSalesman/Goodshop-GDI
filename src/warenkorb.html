@@ -6,6 +6,169 @@
     <title>Warenkorb | Greenshop</title>
     <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.png">
     <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        .cart-section {
+            padding: clamp(32px, 5vw, 64px) clamp(24px, 6vw, 84px);
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 32px;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .cart-section { grid-template-columns: 1fr; }
+        }
+
+        /* Artikelliste */
+        .cart-items { display: flex; flex-direction: column; gap: 16px; }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: #fff;
+            border: 1px solid #ddedd8;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(48,102,57,0.08);
+        }
+        .cart-item img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .cart-item-info { flex: 1; }
+        .cart-item-name { font-size: 1rem; font-weight: 700; color: #164f2e; margin-bottom: 4px; }
+        .cart-item-price { font-size: 0.95rem; color: #315341; }
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .qty-btn {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            border: 1px solid #c8e0c0;
+            background: #f4fbef;
+            color: #1f6b3b;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            line-height: 1;
+        }
+        .qty-btn:hover { background: #dceecf; }
+        .qty-num { font-size: 1rem; font-weight: 700; min-width: 20px; text-align: center; color: #164f2e; }
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #c62828;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        .remove-btn:hover { background: #ffebee; }
+
+        /* Leer-Zustand */
+        .cart-empty {
+            text-align: center;
+            padding: 48px 24px;
+            color: #6a7c6e;
+        }
+        .cart-empty .empty-icon { font-size: 3rem; margin-bottom: 12px; }
+        .cart-empty p { margin-bottom: 20px; }
+
+        /* Zusammenfassung */
+        .cart-summary {
+            background: #fff;
+            border: 1px solid #ddedd8;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(48,102,57,0.08);
+            position: sticky;
+            top: 16px;
+        }
+        .cart-summary h3 { font-size: 1.2rem; color: #164f2e; margin-bottom: 20px; }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: #315341;
+            margin-bottom: 10px;
+        }
+        .summary-row.total {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #164f2e;
+            border-top: 2px solid #dceecf;
+            padding-top: 14px;
+            margin-top: 14px;
+        }
+        .summary-row.discount { color: #2e7d32; font-weight: 600; }
+
+        /* Rabattcode */
+        .discount-box { margin: 16px 0; }
+        .discount-box label { font-size: 0.85rem; font-weight: 600; color: #315341; display: block; margin-bottom: 6px; }
+        .discount-input-row { display: flex; gap: 8px; }
+        .discount-input {
+            flex: 1;
+            padding: 9px 12px;
+            border: 1px solid #c8e0c0;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            color: #164f2e;
+            background: #f4fbef;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .discount-input:focus { outline: none; border-color: #2f8d4e; }
+        .discount-apply-btn {
+            padding: 9px 18px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(130deg, #bfeb61, #68b848);
+            color: #12351f;
+            font-weight: 800;
+            font-size: 0.88rem;
+            cursor: pointer;
+        }
+        .discount-apply-btn:hover { filter: brightness(0.95); }
+        .discount-msg { font-size: 0.82rem; margin-top: 6px; min-height: 18px; }
+        .discount-msg.ok { color: #2e7d32; font-weight: 600; }
+        .discount-msg.err { color: #c62828; }
+
+        /* Checkout-Button */
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(130deg, #1f6b3b, #2f8d4e);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 20px;
+            letter-spacing: 0.02em;
+        }
+        .checkout-btn:hover { filter: brightness(1.1); }
+        .checkout-btn:disabled { opacity: 0.4; cursor: not-allowed; filter: none; }
+
+        /* Hint Banner */
+        .discount-hint {
+            background: linear-gradient(130deg, #e8f5e9, #f1fbee);
+            border: 1px solid #a5d6a7;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #2e7d32;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
     <div class="page-wrap">
@@ -13,7 +176,7 @@
             <header>
                 <div class="top-bar">
                     <a href="login.html" class="top-link">Login</a>
-                    <a href="warenkorb.html" class="top-link">Warenkorb (0)</a>
+                    <a href="warenkorb.html" class="top-link" id="cart-count-link">Warenkorb (0)</a>
                     <a href="blog.html" class="social-top"><img src="../assets/icons/social-facebook.png" alt="Facebook" class="social-top-icon"></a>
                     <a href="blog.html" class="social-top"><img src="../assets/icons/social-instagram.png" alt="Instagram" class="social-top-icon"></a>
                     <a href="blog.html" class="social-top"><img src="../assets/icons/social-youtube.png" alt="YouTube" class="social-top-icon"></a>
@@ -21,7 +184,6 @@
                 <nav>
                     <a href="../index.html" class="logo">
                         <img src="../assets/images/logo-mockup.png" alt="GoodFlow Logo" class="logo-icon">
-                        
                     </a>
                     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Navigation öffnen">
                     <label for="menu-toggle" class="hamburger" aria-hidden="true">
@@ -42,10 +204,206 @@
             <section class="subpage-hero">
                 <div>
                     <h1>Warenkorb</h1>
-                    <p>Dein Warenkorb ist aktuell leer. Lege Produkte im Shop ab, um hier fortzufahren.</p>
+                    <p>Prüfe deine Artikel und schliesse den Kauf ab.</p>
                 </div>
             </section>
+
+            <div class="cart-section">
+                <!-- Linke Spalte: Artikel -->
+                <div>
+                    <div class="cart-items" id="cart-items">
+                        <!-- wird per JS befüllt -->
+                    </div>
+                </div>
+
+                <!-- Rechte Spalte: Zusammenfassung -->
+                <aside class="cart-summary" id="cart-summary">
+                    <h3>Bestellübersicht</h3>
+
+                    <div class="discount-hint">🎉 Aktionscode <strong>GREEN10</strong> gibt dir 10 % auf alles!</div>
+
+                    <div class="summary-row">
+                        <span>Zwischensumme</span>
+                        <span id="subtotal">0,00 EUR</span>
+                    </div>
+                    <div class="summary-row discount" id="discount-row" style="display:none">
+                        <span id="discount-label">Rabatt</span>
+                        <span id="discount-amount">-0,00 EUR</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Versand</span>
+                        <span>Kostenlos</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Gesamt</span>
+                        <span id="total">0,00 EUR</span>
+                    </div>
+
+                    <!-- Rabattcode -->
+                    <div class="discount-box">
+                        <label>Rabattcode</label>
+                        <div class="discount-input-row">
+                            <input class="discount-input" id="discount-input" placeholder="z.B. GREEN10" maxlength="20">
+                            <button class="discount-apply-btn" onclick="applyDiscount()">Einlösen</button>
+                        </div>
+                        <div class="discount-msg" id="discount-msg"></div>
+                    </div>
+
+                    <button class="checkout-btn" id="checkout-btn" disabled onclick="checkout()">JETZT KAUFEN</button>
+                </aside>
+            </div>
+
+            <footer>
+                <div class="footer-col">
+                    <h4>Link</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="kategorien.html">Kategorien</a></li>
+                        <li><a href="nachhaltigkeit.html">Nachhaltigkeit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li>info@Greenshop.de</li>
+                        <li>+49 500 555 788</li>
+                        <li>www.Greenshop.de</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Social Media</h4>
+                    <div class="social-row">
+                        <a href="blog.html" class="social-btn"><img src="../assets/icons/social-facebook.png" alt="Facebook" class="social-icon"></a>
+                        <a href="blog.html" class="social-btn"><img src="../assets/icons/social-instagram.png" alt="Instagram" class="social-icon"></a>
+                        <a href="blog.html" class="social-btn"><img src="../assets/icons/social-youtube.png" alt="YouTube" class="social-icon"></a>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
+
+    <script>
+        // Verfügbare Rabattcodes
+        const CODES = {
+            'GREEN10': { label: '10 % Rabatt (GREEN10)', pct: 0.10 },
+            'SAVE5':   { label: '5 % Rabatt (SAVE5)',   pct: 0.05 },
+        };
+
+        let activeDiscount = null;
+
+        // Warenkorb aus localStorage laden
+        function getCart() {
+            return JSON.parse(localStorage.getItem('gs_warenkorb') || '[]');
+        }
+        function saveCart(korb) {
+            localStorage.setItem('gs_warenkorb', JSON.stringify(korb));
+        }
+
+        // Zähler in Top-Bar
+        function updateCartCount() {
+            const korb = getCart();
+            const total = korb.reduce((s, i) => s + i.menge, 0);
+            document.getElementById('cart-count-link').textContent = `Warenkorb (${total})`;
+        }
+
+        // Menge ändern
+        function changeQty(id, delta) {
+            const korb = getCart();
+            const item = korb.find(p => p.id === id);
+            if (!item) return;
+            item.menge += delta;
+            if (item.menge <= 0) korb.splice(korb.indexOf(item), 1);
+            saveCart(korb);
+            render();
+        }
+
+        // Artikel entfernen
+        function removeItem(id) {
+            const korb = getCart().filter(p => p.id !== id);
+            saveCart(korb);
+            render();
+        }
+
+        // Preise berechnen & anzeigen
+        function updateTotals(korb) {
+            const subtotal = korb.reduce((s, i) => s + i.preis * i.menge, 0);
+            let discountAmt = 0;
+            if (activeDiscount) {
+                discountAmt = subtotal * activeDiscount.pct;
+                document.getElementById('discount-row').style.display = 'flex';
+                document.getElementById('discount-label').textContent = activeDiscount.label;
+                document.getElementById('discount-amount').textContent = `-${discountAmt.toFixed(2).replace('.', ',')} EUR`;
+            } else {
+                document.getElementById('discount-row').style.display = 'none';
+            }
+            const total = subtotal - discountAmt;
+            document.getElementById('subtotal').textContent = subtotal.toFixed(2).replace('.', ',') + ' EUR';
+            document.getElementById('total').textContent = total.toFixed(2).replace('.', ',') + ' EUR';
+        }
+
+        // Warenkorb rendern
+        function render() {
+            const korb = getCart();
+            const container = document.getElementById('cart-items');
+            updateCartCount();
+
+            if (korb.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty">
+                        <div class="empty-icon">🛒</div>
+                        <p>Dein Warenkorb ist leer.</p>
+                        <a href="shop.html" class="btn-cta" style="font-size:1rem;padding:11px 26px">Zum Shop</a>
+                    </div>`;
+                document.getElementById('checkout-btn').disabled = true;
+                updateTotals([]);
+                return;
+            }
+
+            container.innerHTML = korb.map(item => `
+                <div class="cart-item">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">${item.preis.toFixed(2).replace('.', ',')} EUR / Stk.</div>
+                    </div>
+                    <div class="qty-control">
+                        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+                        <span class="qty-num">${item.menge}</span>
+                        <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                    </div>
+                    <button class="remove-btn" onclick="removeItem(${item.id})" title="Entfernen">🗑</button>
+                </div>
+            `).join('');
+
+            document.getElementById('checkout-btn').disabled = false;
+            updateTotals(korb);
+        }
+
+        // Rabattcode einlösen
+        function applyDiscount() {
+            const code = document.getElementById('discount-input').value.trim().toUpperCase();
+            const msg = document.getElementById('discount-msg');
+            if (CODES[code]) {
+                activeDiscount = CODES[code];
+                msg.textContent = '✓ Rabattcode erfolgreich eingelöst!';
+                msg.className = 'discount-msg ok';
+            } else {
+                activeDiscount = null;
+                msg.textContent = '✗ Ungültiger Rabattcode.';
+                msg.className = 'discount-msg err';
+            }
+            updateTotals(getCart());
+        }
+
+        // Kauf abschliessen (Demo)
+        function checkout() {
+            alert('🎉 Vielen Dank für deine Bestellung! (Demo)');
+            localStorage.removeItem('gs_warenkorb');
+            render();
+        }
+
+        // Start
+        render();
+    </script>
 </body>
 </html>
