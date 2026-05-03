@@ -8,47 +8,48 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <!-- Aktions-Banner -->
-    <div id="promo-banner">
-        <span class="banner-emoji">🌿</span>
-        10 % Rabatt auf alles! &nbsp;–&nbsp; Endet in:
-        <span class="banner-countdown">
-            <span class="countdown-block"><span id="cd-days">00</span><span class="cd-label">Tage</span></span>
-            <span class="cd-sep">:</span>
-            <span class="countdown-block"><span id="cd-hours">00</span><span class="cd-label">Std</span></span>
-            <span class="cd-sep">:</span>
-            <span class="countdown-block"><span id="cd-minutes">00</span><span class="cd-label">Min</span></span>
-            <span class="cd-sep">:</span>
-            <span class="countdown-block"><span id="cd-seconds">00</span><span class="cd-label">Sek</span></span>
-        </span>
-        <span class="banner-emoji">🌿</span>
-    </div>
-    <script>
-        (function () {
-            const deadline = new Date('2026-05-13T00:00:00').getTime();
-            function pad(n) { return String(n).padStart(2, '0'); }
-            function tick() {
-                const diff = deadline - Date.now();
-                if (diff <= 0) {
-                    document.getElementById('promo-banner').style.display = 'none';
-                    return;
-                }
-                const days    = Math.floor(diff / 86400000);
-                const hours   = Math.floor((diff % 86400000) / 3600000);
-                const minutes = Math.floor((diff % 3600000)  / 60000);
-                const seconds = Math.floor((diff % 60000)    / 1000);
-                document.getElementById('cd-days').textContent    = pad(days);
-                document.getElementById('cd-hours').textContent   = pad(hours);
-                document.getElementById('cd-minutes').textContent = pad(minutes);
-                document.getElementById('cd-seconds').textContent = pad(seconds);
-            }
-            tick();
-            setInterval(tick, 1000);
-        })();
-    </script>
-
     <div class="page-wrap">
         <div class="site-shell">
+
+            <!-- Aktions-Banner (innerhalb site-shell) -->
+            <div id="promo-banner">
+                <span class="banner-emoji">🌿</span>
+                10 % Rabatt auf alles! &nbsp;–&nbsp; Nur bis <strong>16. Mai 2026</strong> &nbsp;–&nbsp; Endet in:
+                <span class="banner-countdown">
+                    <span class="countdown-block"><span id="cd-days">00</span><span class="cd-label">Tage</span></span>
+                    <span class="cd-sep">:</span>
+                    <span class="countdown-block"><span id="cd-hours">00</span><span class="cd-label">Std</span></span>
+                    <span class="cd-sep">:</span>
+                    <span class="countdown-block"><span id="cd-minutes">00</span><span class="cd-label">Min</span></span>
+                    <span class="cd-sep">:</span>
+                    <span class="countdown-block"><span id="cd-seconds">00</span><span class="cd-label">Sek</span></span>
+                </span>
+                <span class="banner-emoji">🌿</span>
+            </div>
+            <script>
+                (function () {
+                    const deadline = new Date('2026-05-17T00:00:00').getTime();
+                    function pad(n) { return String(n).padStart(2, '0'); }
+                    function tick() {
+                        const diff = deadline - Date.now();
+                        if (diff <= 0) {
+                            document.getElementById('promo-banner').style.display = 'none';
+                            return;
+                        }
+                        const days    = Math.floor(diff / 86400000);
+                        const hours   = Math.floor((diff % 86400000) / 3600000);
+                        const minutes = Math.floor((diff % 3600000)  / 60000);
+                        const seconds = Math.floor((diff % 60000)    / 1000);
+                        document.getElementById('cd-days').textContent    = pad(days);
+                        document.getElementById('cd-hours').textContent   = pad(hours);
+                        document.getElementById('cd-minutes').textContent = pad(minutes);
+                        document.getElementById('cd-seconds').textContent = pad(seconds);
+                    }
+                    tick();
+                    setInterval(tick, 1000);
+                })();
+            </script>
+
             <header>
                 <div class="top-bar">
                     <a href="src/login.html" class="top-link">Login</a>
