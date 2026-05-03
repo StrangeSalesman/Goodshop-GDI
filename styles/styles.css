@@ -14,14 +14,14 @@
 }
 
 /* ========================================================== */
-/* PROMO-BANNER                                               */
+/* PROMO-BANNER – DESKTOP                                     */
 /* ========================================================== */
 
 #promo-banner {
     background-color: var(--green-800);
     color: var(--white);
     text-align: center;
-    padding: 11px 20px;
+    padding: 10px 20px;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -33,18 +33,9 @@
     gap: 10px;
 }
 
-#promo-banner .banner-emoji {
-    font-size: 16px;
-}
+#promo-banner .banner-emoji { font-size: 16px; }
 
-#promo-banner .banner-highlight {
-    background-color: var(--green-500);
-    color: var(--green-900);
-    border-radius: 4px;
-    padding: 1px 7px;
-    font-weight: 700;
-    font-size: 15px;
-}
+#promo-banner strong { white-space: nowrap; }
 
 .banner-countdown {
     display: inline-flex;
@@ -53,7 +44,7 @@
     background: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     padding: 4px 12px;
-    margin-left: 6px;
+    margin-left: 4px;
     font-variant-numeric: tabular-nums;
 }
 
@@ -61,28 +52,67 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    min-width: 28px;
+    width: 38px;
 }
 
 .countdown-block span:first-child {
     font-size: 15px;
     font-weight: 800;
     line-height: 1.1;
-    font-variant-numeric: tabular-nums;
+    width: 22px;
+    text-align: center;
+    display: inline-block;
 }
 
 .cd-label {
-    font-size: 11px !important;
+    font-size: 10px !important;
     font-weight: 500 !important;
     opacity: 0.8;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
 }
 
 .cd-sep {
     font-size: 14px;
     font-weight: 700;
     opacity: 0.5;
+    margin-bottom: 10px;
+}
+
+/* ========================================================== */
+/* PROMO-BANNER – MOBIL (zweizeilig, kompakt)                 */
+/* ========================================================== */
+
+@media (max-width: 600px) {
+    #promo-banner {
+        flex-direction: column;
+        gap: 5px;
+        padding: 8px 12px;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    #promo-banner .banner-emoji { display: none; }
+
+    .banner-countdown {
+        margin-left: 0;
+        padding: 3px 10px;
+        gap: 3px;
+    }
+
+    .countdown-block { width: 34px; }
+
+    .countdown-block span:first-child {
+        font-size: 13px;
+        width: 18px;
+    }
+
+    .cd-label { font-size: 9px !important; }
+
+    .cd-sep {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
 }
 
 * {
@@ -860,62 +890,12 @@ footer {
     }
 }
 
-/* ========================================================== */
-/* MOBILE: PROMO-BANNER FIXES                                 */
-/* ========================================================== */
-
+/* Warenkorb mobil */
 @media (max-width: 980px) {
-    /* Banner: zweizeilig – Text oben, Countdown unten */
-    #promo-banner {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        padding: 8px 12px;
-        font-size: 12px;
-        line-height: 1.3;
-        text-align: center;
-    }
-
-    #promo-banner .banner-emoji {
-        display: none;
-    }
-
-    /* Countdown-Zeile kompakt nebeneinander */
-    .banner-countdown {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 4px;
-        padding: 3px 10px;
-        margin-left: 0;
-        font-variant-numeric: tabular-nums;
-    }
-
-    .countdown-block {
-        width: 38px;
-        justify-content: center;
-    }
-
-    .countdown-block span:first-child {
-        font-size: 14px;
-        width: 20px;
-    }
-
-    .cd-label {
-        font-size: 9px !important;
-        width: auto;
-    }
-
-    .cd-sep {
-        font-size: 13px;
-    }
-
-    /* Warenkorb-Seite: einspaltig auf mobil */
     .cart-section {
         grid-template-columns: 1fr !important;
         padding: 20px 16px !important;
     }
-
     .cart-summary {
         position: static !important;
     }
