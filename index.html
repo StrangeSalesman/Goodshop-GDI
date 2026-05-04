@@ -12,7 +12,33 @@
     <div class="page-wrap">
         <div class="site-shell">
 
-            <!-- Aktions-Banner (innerhalb site-shell) -->
+            <div id="promo-popup" class="popup-overlay">
+                <div class="popup-content">
+                    <button id="close-popup" class="close-btn" aria-label="Schließen">&times;</button>
+                    <h2>✨ Neue Kollektion! ✨</h2>
+                    <p>Entdecke jetzt unsere brandneuen, nachhaltigen Styles und Produkte für den Sommer. Nur für kurze Zeit!</p>
+                    <button class="btn-cta" id="shop-now-btn">Jetzt entdecken</button>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const popup = document.getElementById("promo-popup");
+                    const closeBtn = document.getElementById("close-popup");
+                    const shopBtn = document.getElementById("shop-now-btn");
+
+                    // Funktion zum Schließen des Pop-Ups
+                    function closePopup() {
+                        popup.style.opacity = "0";
+                        setTimeout(() => {
+                            popup.style.display = "none";
+                        }, 300); // Wartet auf die CSS-Transition
+                    }
+
+                    closeBtn.addEventListener("click", closePopup);
+                    shopBtn.addEventListener("click", closePopup);
+                });
+            </script>
             <div id="promo-banner">
                 <span class="banner-emoji">🌿</span>
                 10 % Rabatt auf alles! &nbsp;–&nbsp; Nur bis <strong>16. Mai 2026</strong> &nbsp;–&nbsp; Endet in:
