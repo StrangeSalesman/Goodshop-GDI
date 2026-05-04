@@ -256,13 +256,27 @@ nav {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 12px;
 }
 
 .social-top-icon {
-    width: 20px;
-    height: 20px;
-    display: block;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
+    text-decoration: none;
+    color: var(--white);
+    transition: transform 0.2s ease;
+}
+
+.social-top-icon:hover {
+    transform: scale(1.15);
+}
+
+.social-top-icon i {
+    font-size: 1rem;
 }
 
 /* ========================================================== */
@@ -531,7 +545,8 @@ footer {
 
 .social-row {
     display: flex;
-    gap: 8px;
+    gap: 12px;
+    margin-top: 16px;
 }
 
 .social-btn {
@@ -539,13 +554,54 @@ footer {
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
 }
 
 .social-icon {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.2rem;
+    transition: background 0.2s ease;
+}
+
+/* Facebook */
+.social-btn:nth-child(1) .social-icon {
+    background: #1877F2;
+}
+
+.social-btn:nth-child(1):hover .social-icon {
+    background: #165BDB;
+}
+
+/* Instagram */
+.social-btn:nth-child(2) .social-icon {
+    background: linear-gradient(45deg, #F09433 0%, #E6683C 25%, #DC2743 50%, #CC2366 75%, #BC1888 100%);
+}
+
+.social-btn:nth-child(2):hover .social-icon {
+    filter: brightness(0.9);
+}
+
+/* Twitter */
+.social-btn:nth-child(3) .social-icon {
+    background: #1DA1F2;
+}
+
+.social-btn:nth-child(3):hover .social-icon {
+    background: #1a91da;
 }
 
 /* ========================================================== */
@@ -1213,13 +1269,28 @@ footer {
     }
 
     footer {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
         gap: 16px;
         padding: 32px 20px;
     }
 
+    .footer-col {
+        padding-bottom: 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-col:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
     .footer-col h4 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+
+    .footer-col ul {
+        gap: 8px;
     }
 
     .footer-col li,
@@ -1227,19 +1298,25 @@ footer {
         font-size: 1.1rem;
     }
 
-    .cart-section {
-        grid-template-columns: 1fr !important;
-        padding: 20px 16px !important;
+    .social-row {
+        gap: 16px;
+        margin-top: 16px;
     }
 
-    .cart-summary {
-        position: static !important;
+    .social-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem;
     }
 
-    .dashboard-container {
-        padding: 20px;
-        margin: 20px 16px;
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        margin-top: 28px;
+        font-size: 0.85em;
     }
+
+    /* ...existing code... */
 }
 
 /* SMARTPHONE BREAKPOINT (max-width: 480px) */
@@ -1399,13 +1476,27 @@ footer {
 
     footer {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 20px;
         padding: 24px 16px;
     }
 
+    .footer-col {
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-col:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
     .footer-col h4 {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .footer-col ul {
+        gap: 6px;
     }
 
     .footer-col li,
@@ -1413,45 +1504,24 @@ footer {
         font-size: 0.95rem;
     }
 
+    .social-row {
+        gap: 12px;
+        margin-top: 14px;
+        justify-content: flex-start;
+    }
+
     .social-icon {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
+        font-size: 1.2rem;
     }
 
-    .login-section {
-        padding: 20px 16px 40px;
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 16px;
+        margin-top: 20px;
+        font-size: 0.8em;
     }
 
-    .login-card {
-        padding: 18px;
-    }
-
-    .login-card h2 {
-        font-size: 1.3rem;
-        margin-bottom: 12px;
-    }
-
-    .login-form input {
-        padding: 10px 12px;
-        font-size: 0.95rem;
-    }
-
-    .cart-section {
-        grid-template-columns: 1fr !important;
-        padding: 16px 12px !important;
-    }
-
-    .dashboard-container {
-        padding: 16px;
-        margin: 16px 12px;
-    }
-
-    .dashboard-card {
-        padding: 14px;
-    }
-
-    .welcome-msg {
-        font-size: 1.4rem;
-        margin-bottom: 16px;
-    }
+    /* ...existing code... */
 }

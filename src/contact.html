@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Konto - Greenshop</title>
+    <title>Kontakt - Greenshop</title>
     <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.png">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,44 +34,55 @@
                     <ul class="nav-links">
                         <li><a href="../index.html">Home</a></li>
                         <li><a href="shop.html">Produkte</a></li>
-                        <li><a href="nachhaltigkeit.html">Nachhaltigkeit</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="ueber-uns.html">Über Uns</a></li>
-                        <li><a href="contact.html">Kontakt</a></li>
+                        <li><a href="contact.html" class="active">Kontakt</a></li>
                         <li><a href="login.html">Login</a></li>
                     </ul>
                 </nav>
             </header>
 
-            <section class="dashboard-section">
-                <div class="dashboard-container">
-                    <h1 class="welcome-msg">Willkommen im Greenshop-Dashboard!</h1>
-                    <p>Sie sind erfolgreich eingeloggt.</p>
-                    
-                    <div class="dashboard-grid">
-                        <div class="dashboard-card">
-                            <h3>Meine Bestellungen</h3>
-                            <p>Sie haben derzeit keine aktiven Bestellungen über das Goodflow-Logistiknetz.</p>
-                            <br>
-                            <a href="shop.html" class="text-link">Jetzt einkaufen</a>
-                        </div>
-                        <div class="dashboard-card">
-                            <h3>Kontodetails</h3>
-                            <p><strong>Name:</strong> Admin User</p>
-                            <p><strong>E-Mail:</strong> admin@greenshop.de</p>
-                            <br>
-                            <a href="#" class="text-link">Daten bearbeiten</a>
-                        </div>
+            <main>
+                <section class="subpage-hero">
+                    <h1>Kontakt</h1>
+                    <p>Wir sind für Sie da! Schreiben Sie uns eine Nachricht oder rufen Sie uns an.</p>
+                </section>
+
+                <section class="section">
+                    <div class="content-narrow">
+                        <h2>Kontaktinformationen</h2>
+                        <p>
+                            <strong>Greenshop GmbH</strong><br>
+                            Musterstraße 1<br>
+                            12345 Musterstadt<br><br>
+                            Telefon: +49 (0)123 456789<br>
+                            E-Mail: info@greenshop.de
+                        </p>
+
+                        <h2 style="margin-top: 40px;">Senden Sie uns eine Nachricht</h2>
+                        <form class="login-form"> <!-- Reusing login-form styles for a simple contact form -->
+                            <label for="contact-name">
+                                Ihr Name
+                                <input id="contact-name" type="text" placeholder="Max Mustermann" required>
+                            </label>
+                            <label for="contact-email">
+                                Ihre E-Mail-Adresse
+                                <input id="contact-email" type="email" placeholder="max.mustermann@example.com" required>
+                            </label>
+                            <label for="contact-message">
+                                Ihre Nachricht
+                                <textarea id="contact-message" rows="6" placeholder="Ihre Nachricht an uns..." style="border: 1px solid #c6ddbd; border-radius: 12px; padding: 12px 14px; font-size: 1rem; width: 100%; resize: vertical;"></textarea>
+                            </label>
+                            <button type="submit" class="btn-cart" style="width: auto; align-self: flex-start;">Nachricht senden</button>
+                        </form>
                     </div>
-                    
-                    <a href="login.html" class="logout-btn">Abmelden</a>
-                </div>
-            </section>
+                </section>
+            </main>
+
             <footer>
                 <div class="footer-col">
                     <h4>Greenshop</h4>
                     <ul>
-                        <li><a href="nachhaltigkeit.html">Nachhaltigkeit</a></li>
                         <li><a href="ueber-uns.html">Über Uns</a></li>
                         <li><a href="#">Karriere</a></li>
                         <li><a href="#">Presse</a></li>
