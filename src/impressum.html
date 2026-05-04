@@ -4,134 +4,326 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum - Greenshop</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.png">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Spezifische Styles für das Impressum (nach Screenshot) */
+        .imp-page-container {
+            padding: clamp(40px, 6vw, 80px) clamp(24px, 6vw, 84px);
+            background-color: var(--white);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .imp-header-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+            border-bottom: 1px solid #eef6ea;
+            padding-bottom: 24px;
+        }
+
+        .imp-icon {
+            width: 54px;
+            height: 54px;
+            background: #dceecf;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--green-800);
+            flex-shrink: 0;
+        }
+
+        .imp-header-text h1 {
+            color: #f4f4f4; /* Text im Bild ist sehr hell, wir nehmen das reguläre Grün für besseren Kontrast, oder passen es ans Bild an */
+            color: var(--green-100); 
+            font-size: 2.2rem;
+            margin-bottom: 4px;
+        }
+        
+        /* Überschreibung für Lesbarkeit, falls das Bild einen Filter hat */
+        .imp-header-text h1 { color: #f2f2f2; } 
+        body { background: #ffffff; }
+
+        /* Anpassung an das helle Design mit dunklen Karten */
+        .imp-header-text h1 {
+            color: var(--green-900);
+            font-size: 2.2rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .imp-header-text p {
+            color: #88998d;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .imp-section {
+            margin-bottom: 32px;
+        }
+
+        .imp-section h3 {
+            color: var(--green-700);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .imp-card {
+            background-color: #333333;
+            color: #e0e0e0;
+            border-radius: 12px;
+            padding: 24px 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .imp-grid {
+            display: grid;
+            grid-template-columns: minmax(180px, 250px) 1fr;
+            gap: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            align-items: start;
+        }
+
+        .imp-grid:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .imp-grid:first-child {
+            padding-top: 0;
+        }
+
+        .imp-label {
+            color: #aaaaaa;
+            font-weight: 500;
+        }
+
+        .imp-value {
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        .imp-text-block {
+            line-height: 1.7;
+            color: #e0e0e0;
+            padding: 4px 0;
+        }
+        
+        .imp-text-block:not(:last-child) {
+            margin-bottom: 16px;
+        }
+
+        .imp-card a {
+            color: var(--green-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .imp-card a:hover {
+            color: var(--green-300);
+            text-decoration: underline;
+        }
+
+        .imp-warning {
+            border-left: 4px solid var(--green-500);
+        }
+
+        @media (max-width: 600px) {
+            .imp-grid {
+                grid-template-columns: 1fr;
+                gap: 4px;
+                padding: 12px 0;
+            }
+            .imp-card {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="page-wrap">
         <div class="site-shell">
-            <!-- TOP BAR -->
-            <div class="top-bar">
-                <a href="#" class="top-link">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>+49 123 456789</span>
-                </a>
-                <a href="#" class="top-link">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>info@greenshop.de</span>
-                </a>
-                <div class="social-top">
-                    <a href="#" class="social-top-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-top-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-top-icon"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-
-            <!-- HEADER & NAVIGATION -->
-            <nav>
-                <a href="../index.html" class="logo">
-                    <img src="../assets/images/logo-mockup.png" alt="Greenshop Logo" class="logo-icon">
-                </a>
-                <input type="checkbox" id="menu-toggle" class="menu-toggle">
-                <label for="menu-toggle" class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-                <ul class="nav-links">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="shop.html">Produkte</a></li>
-                    <li><a href="nachhaltigkeit.html">Nachhaltigkeit</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="ueber-uns.html">Über Uns</a></li>
-                    <li><a href="contact.html">Kontakt</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </nav>
-
-            <main>
-                <section class="subpage-hero">
-                    <h1>Impressum</h1>
-                    <p>Informationen gemäß § 5 TMG</p>
-                </section>
-
-                <section class="section">
-                    <div class="content-narrow">
-                        <h2>Angaben gemäß § 5 TMG</h2>
-                        <p>
-                            Greenshop GmbH<br>
-                            Musterstraße 1<br>
-                            12345 Musterstadt
-                        </p>
-
-                        <h2>Vertreten durch</h2>
-                        <p>Geschäftsführer: Carsten Ludewig</p>
-
-                        <h2>Kontakt</h2>
-                        <p>
-                            Telefon: +49 (0)123 456789<br>
-                            Telefax: +49 (0)123 456789-0<br>
-                            E-Mail: info@greenshop.de
-                        </p>
-
-                        <h2>Registereintrag</h2>
-                        <p>
-                            Eintragung im Handelsregister.<br>
-                            Registergericht: Amtsgericht Musterstadt<br>
-                            Registernummer: HRB 12345
-                        </p>
-
-                        <h2>Umsatzsteuer-ID</h2>
-                        <p>
-                            Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br>
-                            DE123456789
-                        </p>
-
-                        <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-                        <p>
-                            Carsten Ludewig<br>
-                            Musterstraße 1<br>
-                            12345 Musterstadt
-                        </p>
-
-                        <h2>Streitschlichtung</h2>
-                        <p>
-                            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:<br>
-                            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="text-link">https://ec.europa.eu/consumers/odr/</a>.<br>
-                            Unsere E-Mail-Adresse finden Sie oben im Impressum.
-                        </p>
-                        <p>
-                            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-                        </p>
-
-                        <h2>Haftung für Inhalte</h2>
-                        <p>
-                            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
-                        </p>
-                        <p>
-                            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
-                        </p>
-
-                        <h2>Haftung für Links</h2>
-                        <p>
-                            Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
-                        </p>
-                        <p>
-                            Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
-                        </p>
-
-                        <h2>Urheberrecht</h2>
-                        <p>
-                            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
-                        </p>
-                        <p>
-                            Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
-                        </p>
+            <header>
+                <div class="top-bar">
+                    <a href="login.html" class="top-link">Login</a>
+                    <a href="warenkorb.html" class="top-link" id="cart-count-link">Warenkorb (0)</a>
+                    <div class="social-top">
+                        <a href="#" class="social-top-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-top-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-top-icon"><i class="fab fa-twitter"></i></a>
                     </div>
-                </section>
+                </div>
+                <nav>
+                    <a href="../index.html" class="logo">
+                        <img src="../assets/images/logo-mockup.png" alt="Greenshop Logo" class="logo-icon">
+                    </a>
+                    <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Navigation öffnen">
+                    <label for="menu-toggle" class="hamburger" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Produkte</a></li>
+                        <li><a href="nachhaltigkeit.html">Nachhaltigkeit</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="ueber-uns.html">Über Uns</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main class="imp-page-container">
+                <div class="imp-header-wrapper">
+                    <div class="imp-icon">🌿</div>
+                    <div class="imp-header-text">
+                        <h1>Impressum</h1>
+                        <p>Angaben gemäß § 5 TMG</p>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <h3>Unternehmensangaben</h3>
+                    <div class="imp-card">
+                        <div class="imp-grid">
+                            <div class="imp-label">Firmenname</div>
+                            <div class="imp-value">Greenshop GmbH</div>
+                        </div>
+                        <div class="imp-grid">
+                            <div class="imp-label">Geschäftsführung</div>
+                            <div class="imp-value">Gruppe 17 GbI</div>
+                        </div>
+                        <div class="imp-grid">
+                            <div class="imp-label">Straße</div>
+                            <div class="imp-value">An der Hochschule 1</div>
+                        </div>
+                        <div class="imp-grid">
+                            <div class="imp-label">PLZ / Ort</div>
+                            <div class="imp-value">86161<br>Augsburg</div>
+                        </div>
+                        <div class="imp-grid">
+                            <div class="imp-label">Land</div>
+                            <div class="imp-value">Deutschland</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <h3>Kontakt</h3>
+                    <div class="imp-card">
+                        <div class="imp-grid">
+                            <div class="imp-label">Telefon</div>
+                            <div class="imp-value">+49 500 555 788</div>
+                        </div>
+                        <div class="imp-grid">
+                            <div class="imp-label">E-Mail</div>
+                            <div class="imp-value"><a href="mailto:info@greenshop.de">info@greenshop.de</a></div>
+                        </div>
+                        <div class="imp-grid">
+                            <div class="imp-label">Website</div>
+                            <div class="imp-value"><a href="https://www.greenshop.de">www.greenshop.de</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <h3>Handelsregister</h3>
+                    <div class="imp-card">
+                        <div class="imp-grid">
+                            <div class="imp-label">Registergericht</div>
+                            <div class="imp-value">Amtsgericht Augsburg</div>
+                        </div>
+                        <div class="imp-grid">
+                            <div class="imp-label">Registernummer</div>
+                            <div class="imp-value">HRB<br>7777777777</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <h3>Steuerliche Angaben</h3>
+                    <div class="imp-card">
+                        <div class="imp-grid">
+                            <div class="imp-label">Umsatzsteuer-ID</div>
+                            <div class="imp-value">DE1212121212</div>
+                        </div>
+                        <div class="imp-text-block" style="margin-top: 8px;">
+                            Die Umsatzsteuer-Identifikationsnummer wurde gemäß § 27a Umsatzsteuergesetz erteilt.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <h3>Verantwortlich für den Inhalt</h3>
+                    <div class="imp-card">
+                        <div class="imp-grid">
+                            <div class="imp-label">Gemäß § 18 Abs. 2 MStV</div>
+                            <div class="imp-value">Gruppe 17 GbI, An der Hochschule 1, 86161 Augsburg</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <h3>Streitschlichtung</h3>
+                    <div class="imp-card">
+                        <div class="imp-text-block">
+                            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:<br>
+                            <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>
+                        </div>
+                        <div class="imp-text-block">
+                            Unsere E-Mail-Adresse für Verbraucherbeschwerden lautet: <a href="mailto:info@greenshop.de">info@greenshop.de</a><br>
+                            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <h3>Haftung für Inhalte</h3>
+                    <div class="imp-card">
+                        <div class="imp-text-block">
+                            Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <h3>Haftung für Links</h3>
+                    <div class="imp-card">
+                        <div class="imp-text-block">
+                            Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <h3>Urheberrecht</h3>
+                    <div class="imp-card">
+                        <div class="imp-text-block">
+                            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imp-section">
+                    <div class="imp-card imp-warning">
+                        <div class="imp-text-block">
+                            <strong>Hinweis:</strong> Dies ist ein Hochschulprojekt (Gruppe 17, THA Augsburg). Die angegebenen Daten dienen ausschließlich Demonstrationszwecken. Handelsregisternummer und Steuernummer sind Platzhalterwerte und entsprechen keiner realen Eintragung.
+                        </div>
+                    </div>
+                </div>
             </main>
 
-            <!-- FOOTER -->
             <footer>
                 <div class="footer-col">
                     <h4>Greenshop</h4>
@@ -159,9 +351,9 @@
                         <li><a href="impressum.html">Impressum</a></li>
                     </ul>
                     <div class="social-row">
-                        <a href="#" class="social-btn"><i class="fab fa-facebook-f social-icon"></i></a>
-                        <a href="#" class="social-btn"><i class="fab fa-instagram social-icon"></i></a>
-                        <a href="#" class="social-btn"><i class="fab fa-twitter social-icon"></i></a>
+                        <a href="#" class="social-btn"><span class="social-icon"><i class="fab fa-facebook-f"></i></span></a>
+                        <a href="#" class="social-btn"><span class="social-icon"><i class="fab fa-instagram"></i></span></a>
+                        <a href="#" class="social-btn"><span class="social-icon"><i class="fab fa-twitter"></i></span></a>
                     </div>
                 </div>
                 <div class="footer-bottom">
@@ -170,6 +362,20 @@
             </footer>
         </div>
     </div>
+
+    <!-- Warenkorb-Skript (Damit der Zähler im Header auch hier funktioniert) -->
+    <script>
+        function updateCartCount() {
+            try {
+                const korb = JSON.parse(localStorage.getItem('gs_warenkorb') || '[]');
+                const total = korb.reduce((sum, item) => sum + item.menge, 0);
+                const link = document.getElementById('cart-count-link');
+                if(link) link.textContent = `Warenkorb (${total})`;
+            } catch(e) {
+                console.error("Fehler beim Lesen des Warenkorbs", e);
+            }
+        }
+        updateCartCount();
+    </script>
 </body>
 </html>
-
