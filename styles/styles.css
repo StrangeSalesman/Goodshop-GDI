@@ -1,8 +1,7 @@
 /* ========================================================== */
 /* CSS STRUCTURE & ORGANIZATION                              */
 /* ========================================================== */
-/* 
-  1. CSS VARIABLES & ROOT
+/* 1. CSS VARIABLES & ROOT
   2. RESET & GLOBAL STYLES
   3. TYPOGRAPHY & BUTTONS
   4. HEADER & NAVIGATION
@@ -17,6 +16,7 @@
   13. LOGIN & DASHBOARD
   14. ÜBER UNS / TEAM
   15. MEDIA QUERIES (980px, 768px, 480px)
+  16. PROMO POP-UP / MODAL
 */
 
 /* ========================================================== */
@@ -1316,7 +1316,6 @@ footer {
         font-size: 0.85em;
     }
 
-    /* ...existing code... */
 }
 
 /* SMARTPHONE BREAKPOINT (max-width: 480px) */
@@ -1522,6 +1521,79 @@ footer {
         margin-top: 20px;
         font-size: 0.8em;
     }
+}
 
-    /* ...existing code... */
+/* ========================================================== */
+/* 16. PROMO POP-UP / MODAL                                  */
+/* ========================================================== */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(14, 38, 23, 0.85); /* Dunkelgrünes Overlay passend zum Theme */
+    z-index: 9999; /* Legt sich über alle anderen Elemente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.popup-content {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    border: 2px solid #deedd8;
+    animation: popupFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.popup-content h2 {
+    color: var(--green-900);
+    margin-bottom: 16px;
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+}
+
+.popup-content p {
+    color: var(--text-700);
+    margin-bottom: 28px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.close-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 2.2rem;
+    color: var(--green-900);
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.15);
+    color: var(--green-500);
+}
+
+/* Weiche Einblend-Animation */
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
