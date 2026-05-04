@@ -12,6 +12,7 @@
     <div class="page-wrap">
         <div class="site-shell">
 
+            <!-- === START WERBUNG POP-UP === -->
             <div id="promo-popup" class="popup-overlay">
                 <div class="popup-content">
                     <button id="close-popup" class="close-btn" aria-label="Schließen">&times;</button>
@@ -39,6 +40,9 @@
                     shopBtn.addEventListener("click", closePopup);
                 });
             </script>
+            <!-- === ENDE WERBUNG POP-UP === -->
+
+            <!-- Aktions-Banner (innerhalb site-shell) -->
             <div id="promo-banner">
                 <span class="banner-emoji">🌿</span>
                 10 % Rabatt auf alles! &nbsp;–&nbsp; Nur bis <strong>16. Mai 2026</strong> &nbsp;–&nbsp; Endet in:
@@ -80,7 +84,8 @@
             <header>
                 <div class="top-bar">
                     <a href="src/login.html" class="top-link">Login</a>
-                    <a href="src/warenkorb.html" class="top-link">Warenkorb (0)</a>
+                    <!-- Warenkorb-ID hinzugefügt -->
+                    <a href="src/warenkorb.html" class="top-link" id="cart-count-link">Warenkorb (0)</a>
                     <div class="social-top">
                         <a href="#" class="social-top-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-top-icon"><i class="fab fa-instagram"></i></a>
@@ -98,7 +103,7 @@
                         <span></span>
                     </label>
                     <ul class="nav-links">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html" class="active">Home</a></li>
                         <li><a href="src/shop.html">Produkte</a></li>
                         <li><a href="src/nachhaltigkeit.html">Nachhaltigkeit</a></li>
                         <li><a href="src/blog.html">Blog</a></li>
@@ -141,36 +146,36 @@
 
                 <section class="section products">
                     <h2 class="section-title">Unsere grünen Bestseller</h2>
-<div class="product-grid">
-    <article class="product-card">
-        <img src="assets/images/bottle.png" alt="Wasserflasche" class="product-img">
-        <p class="price">16,90 EUR</p>
-        <h4>Reusable Water Bottle</h4>
-        <p class="desc">Leichte Edelstahlflasche für den Alltag.</p>
-        <button class="btn-cart" onclick="addToCart({id:1, name:'Reusable Water Bottle', preis:16.90, img:'assets/images/bottle.png'})">IN DEN WARENKORB</button>
-    </article>
-    <article class="product-card">
-        <img src="assets/images/coffee.png" alt="Kaffeebohnen" class="product-img">
-        <p class="price">10,50 EUR</p>
-        <h4>Organics Coffee Beans</h4>
-        <p class="desc">Fairtrade Arabica Bohnen aus Bioanbau.</p>
-        <button class="btn-cart" onclick="addToCart({id:2, name:'Organics Coffee Beans', preis:10.50, img:'assets/images/coffee.png'})">IN DEN WARENKORB</button>
-    </article>
-    <article class="product-card">
-        <img src="assets/images/toothbrush.png" alt="Bambus Zahnbuerste" class="product-img">
-        <p class="price">2,50 EUR</p>
-        <h4>Bamboo Toothbrush</h4>
-        <p class="desc">Nachhaltige Zahnbürste aus Bambus.</p>
-        <button class="btn-cart" onclick="addToCart({id:3, name:'Bamboo Toothbrush', preis:2.50, img:'assets/images/toothbrush.png'})">IN DEN WARENKORB</button>
-    </article>
-    <article class="product-card">
-        <img src="assets/images/solar charger.png" alt="Solar Ladegerat" class="product-img">
-        <p class="price">9,90 EUR</p>
-        <h4>Solar Charger</h4>
-        <p class="desc">Kompaktes Ladegerät für Outdoor Trips.</p>
-        <button class="btn-cart" onclick="addToCart({id:4, name:'Solar Charger', preis:9.90, img:'assets/images/solar charger.png'})">IN DEN WARENKORB</button>
-    </article>
-</div>
+                    <!-- Produkte mit aktualisierten Warenkorb-Buttons -->
+                    <div class="product-grid">
+                        <article class="product-card">
+                            <img src="assets/images/bottle.png" alt="Wasserflasche" class="product-img">
+                            <p class="price">16,90 EUR</p>
+                            <h4>Reusable Water Bottle</h4>
+                            <p class="desc">Leichte Edelstahlflasche für den Alltag.</p>
+                            <button class="btn-cart" onclick="addToCart({id:1, name:'Reusable Water Bottle', preis:16.90, img:'assets/images/bottle.png'})">IN DEN WARENKORB</button>
+                        </article>
+                        <article class="product-card">
+                            <img src="assets/images/coffee.png" alt="Kaffeebohnen" class="product-img">
+                            <p class="price">10,50 EUR</p>
+                            <h4>Organics Coffee Beans</h4>
+                            <p class="desc">Fairtrade Arabica Bohnen aus Bioanbau.</p>
+                            <button class="btn-cart" onclick="addToCart({id:2, name:'Organics Coffee Beans', preis:10.50, img:'assets/images/coffee.png'})">IN DEN WARENKORB</button>
+                        </article>
+                        <article class="product-card">
+                            <img src="assets/images/toothbrush.png" alt="Bambus Zahnbuerste" class="product-img">
+                            <p class="price">2,50 EUR</p>
+                            <h4>Bamboo Toothbrush</h4>
+                            <p class="desc">Nachhaltige Zahnbürste aus Bambus.</p>
+                            <button class="btn-cart" onclick="addToCart({id:3, name:'Bamboo Toothbrush', preis:2.50, img:'assets/images/toothbrush.png'})">IN DEN WARENKORB</button>
+                        </article>
+                        <article class="product-card">
+                            <img src="assets/images/solar charger.png" alt="Solar Ladegerat" class="product-img">
+                            <p class="price">9,90 EUR</p>
+                            <h4>Solar Charger</h4>
+                            <p class="desc">Kompaktes Ladegerät für Outdoor Trips.</p>
+                            <button class="btn-cart" onclick="addToCart({id:4, name:'Solar Charger', preis:9.90, img:'assets/images/solar charger.png'})">IN DEN WARENKORB</button>
+                        </article>
                     </div>
 
                     <div class="info-banner">
@@ -224,5 +229,44 @@
             </footer>
         </div>
     </div>
+
+    <!-- Toast-Benachrichtigung und Warenkorb-Skript -->
+    <div class="cart-feedback" id="cart-toast">✓ Produkt zum Warenkorb hinzugefügt!</div>
+
+    <script>
+        // Warenkorb-Zähler aktualisieren
+        function updateCartCount() {
+            const korb = JSON.parse(localStorage.getItem('gs_warenkorb') || '[]');
+            const total = korb.reduce((sum, item) => sum + item.menge, 0);
+            const link = document.getElementById('cart-count-link');
+            if(link) link.textContent = `Warenkorb (${total})`;
+        }
+
+        // Produkt hinzufügen
+        function addToCart(produkt) {
+            const korb = JSON.parse(localStorage.getItem('gs_warenkorb') || '[]');
+            const existing = korb.find(p => p.id === produkt.id);
+            if (existing) {
+                existing.menge += 1;
+            } else {
+                korb.push({ ...produkt, menge: 1 });
+            }
+            localStorage.setItem('gs_warenkorb', JSON.stringify(korb));
+            updateCartCount();
+            showToast();
+        }
+
+        // Toast anzeigen
+        function showToast() {
+            const toast = document.getElementById('cart-toast');
+            if(toast) {
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2200);
+            }
+        }
+
+        // Beim Laden den Zähler direkt initialisieren
+        updateCartCount();
+    </script>
 </body>
 </html>
