@@ -44,8 +44,17 @@
             </header>
             <section class="login-section">
                 <article class="login-card">
-                    <h2>Konto anmelden</h2>
-                    
+                    <div class="login-card-head">
+                        <div>
+                            <span class="badge-pill">Secure Access</span>
+                            <h2>Konto anmelden</h2>
+                            <p class="login-intro">Willkommen zurück im Greenshop-Portal. Melde dich schnell und sicher an, um deine Bestellungen zu verwalten.</p>
+                        </div>
+                        <div class="login-card-visual" aria-hidden="true">
+                            <span class="login-icon">👋</span>
+                        </div>
+                    </div>
+
                     <!-- Fehlermeldung -->
                     <div id="error-msg"></div>
 
@@ -63,11 +72,16 @@
                                 <span id="togglePassword" title="Passwort anzeigen">👁️</span>
                             </div>
                         </label>
-                        
-                        <div class="login-actions">
+
+                        <div class="form-row form-checkbox-row">
+                            <label class="checkbox-label" for="remember-me">
+                                <input id="remember-me" name="remember-me" type="checkbox">
+                                Angemeldet bleiben
+                            </label>
                             <a href="#" class="text-link">Passwort vergessen?</a>
-                            <button type="submit" class="btn-cart">Anmelden</button>
                         </div>
+
+                        <button type="submit" class="btn-cart btn-login">Anmelden</button>
                     </form>
                 </article>
             </section>
